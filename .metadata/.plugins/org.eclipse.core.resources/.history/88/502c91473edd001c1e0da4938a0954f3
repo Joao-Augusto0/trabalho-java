@@ -9,7 +9,6 @@ public class Paciente {
 	String diagnostico;
 	String recomendacao;
 
-	
 	public Paciente(String nome, String data, String horario, String medico, String diagnostico, String recomendacao) {
 
 		this.nome = nome;
