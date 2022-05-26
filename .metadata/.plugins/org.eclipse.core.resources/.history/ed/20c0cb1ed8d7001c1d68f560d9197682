@@ -1,0 +1,14 @@
+package controle;
+
+import java.util.ArrayList;
+
+import modelo.Medico;
+
+public class MedicoProcessa {
+	
+	public static ArrayList<Medico> medicos = new ArrayList<>();
+	public static String EmailMedicoConectado;
+	
+	private static MedicoDAO md = new MedicoDAO();
+
+}

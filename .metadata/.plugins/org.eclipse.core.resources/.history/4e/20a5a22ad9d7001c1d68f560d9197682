@@ -1,0 +1,42 @@
+package controle;
+
+import java.util.ArrayList;
+
+import modelo.Enfermeira;
+import modelo.modelodao.EnfermeiraDAO;
+
+public class EnfermeiraProcessa {
+	
+	public static ArrayList<Enfermeira> enfermeiras = new ArrayList<>();
+	public static String EmailEnfermeiraConectado;
+	private static EnfermeiraDAO ed = new EnfermeiraDAO();
+	
+	public static void abrir() {
+		enfermeiras = ed.ler();
+		if(enfermeiras.size() == 0) {
+			enfermeiras.add(new Enfermeira("admim",Cripto.encripta("admim")));
+		}
+	}
+	
+	public static void salvar() {
+		ed.escrever(enfermeiras);
+	}
+
+	public static int checarEmail(String email) {
+		int retorno = -1;
+		for(int i = 0;i < enfermeiras.size();i++) {
+			if(enfermeiras.get(i).getEmail().equals(email)) {
+				return i;
+			}
+		}
+		return retorno;
+	}
+	
+	public static boolean checarSenha(int indice,String senha) {
+		if(enfermeiras.get(indice).getSenha().equals(senha)) {
+			EmailEnfermeiraConectado = enfermeiras.get(indice).getEmail();
+				return true;
+		}
+		return false;
+	}
+}

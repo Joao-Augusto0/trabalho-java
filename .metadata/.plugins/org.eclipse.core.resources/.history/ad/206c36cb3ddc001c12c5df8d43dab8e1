@@ -1,0 +1,9 @@
+package telas;
+
+public class TelaMedico {
+
+	public static void main(String[] args) {
+
+	}
+
+}

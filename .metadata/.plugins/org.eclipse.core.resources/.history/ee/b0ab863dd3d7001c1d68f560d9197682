@@ -1,0 +1,13 @@
+package modelo.modelodao;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+
+public class PacienteDAO {
+	
+	private BufferedReader br;
+	private BufferedWriter bw;
+	private String path = "./data/pacientes.csv";
+	
+	
+}

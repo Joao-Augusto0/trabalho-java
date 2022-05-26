@@ -1,0 +1,39 @@
+package controle;
+
+import java.util.ArrayList;
+
+import modelo.Medico;
+import modelo.modelodao.MedicoDAO;
+
+public class MedicoProcessa {
+	
+	public static ArrayList<Medico> medicos = new ArrayList<>();
+	public static String EmailMedicoConectado;
+	private static MedicoDAO md = new MedicoDAO();
+	
+	public static void abrir() {
+		medicos = md.ler();
+	}
+	
+	public static void salvar() {
+		md.escrever(medicos);
+	}
+
+	public static int checarEmail(String email) {
+		int retorno = -1;
+		for(int i = 0;i < medicos.size();i++) {
+			if(medicos.get(i).getEmail().equals(email)) {
+				return i;
+			}
+		}
+		return retorno;
+	}
+	
+	public static boolean checarSenha(int indice,String senha) {
+		if(medicos.get(indice).getSenha().equals(senha)) {
+			EmailMedicoConectado = medicos.get(indice).getEmail();
+				return true;
+		}
+		return false;
+	}
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="controle.MedicoProcessa"/>
+    <fullyQualifiedTypeName name="controle.EnfermeiraProcessa"/>
+    <fullyQualifiedTypeName name="modelo.Medico"/>
+    <fullyQualifiedTypeName name="modelo.Enfermeira"/>
+    <fullyQualifiedTypeName name="modelo.modelodao.EnfermeiraDAO"/>
+    <fullyQualifiedTypeName name="modelo.modelodao.MedicoDAO"/>
+    <fullyQualifiedTypeName name="modelo.modelodao.RelatorioDAO"/>
+    <fullyQualifiedTypeName name="modelo.Paciente"/>
+    <fullyQualifiedTypeName name="controle.LoginProcessa"/>
+    <fullyQualifiedTypeName name="controle.RelatorioProcessa"/>
+    <fullyQualifiedTypeName name="controle.PacienteProcessa"/>
+    <fullyQualifiedTypeName name="uteis.Cripto"/>
+    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+    <fullyQualifiedTypeName name="modelo.Funcionario"/>
+</qualifiedTypeNameHistroy>
