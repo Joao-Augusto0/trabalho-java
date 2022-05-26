@@ -29,9 +29,6 @@ public class TelaLogin extends JFrame implements ActionListener {
 	private JTextField tfLogin;
 	private JPasswordField senha;
 	private JButton login;
-	private JScrollPane scroll;
-	private JTable table;
-	private DefaultTableModel tableModel;
 	private String imgIco = "./assets/key.png";
 
 	TelaLogin() {
@@ -91,7 +88,6 @@ public class TelaLogin extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		LoginProcessa.abrir();
 		PacienteProcessa.abrir();
-		//RelatorioProcessa.abrir();
 		TelaLogin login = new TelaLogin();
 		login.setVisible(true);
 	}
