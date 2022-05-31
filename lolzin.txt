@@ -1,0 +1,103 @@
+shurima
+
+top - renekton
+jg - taliyah
+mid - azir
+adc - sivir
+sup - amumu
+
+zaun
+
+top - urgot
+jg - zac
+mid - ekko
+adc - jinks
+sup - renata
+
+vazio
+
+top - kassadin
+jg - bel-veth
+mid -kha zix
+adc - kai-sa
+sup - cho'gath
+
+freljord
+
+top - gnar
+jg - trundle
+mid - lissandra
+adc - ashe
+sup - braum
+
+bandopolis
+
+top - teemo
+jg - rumble
+mid - corki
+adc - tristana
+sup - lulu
+
+demacia
+
+top - fiora
+jg - jarvan iv
+mid - sylas
+adc - vayne
+sup - morgana
+
+ilhas das sombras
+
+top -  gwen
+jg - viego
+mid - vex
+adc - kalista	
+sup - thresh
+
+ionia
+
+top - sett
+jg - kayn
+mid - ahri
+adc - xayah 
+sup - rakan
+
+ixtal
+
+top - malphite
+jg - rengar
+mid - qiyana
+adc - neeko
+sup - zyra
+
+noxus
+
+top - mordekaiser
+jg - talon
+mid - vladimir
+adc - samira
+sup - swain
+
+piltover
+
+top - camille
+jg - vi
+mid - orianna
+adc - ezreal
+sup - seraphine
+
+targon 
+
+top - pantheon
+jg - diana
+mid - zoe
+adc - aphelios
+sup - leona
+
+aguas de sentina
+
+top - illaoi
+jg - graves
+mid - tf
+adc - miss fortune
+sup - nautilus
