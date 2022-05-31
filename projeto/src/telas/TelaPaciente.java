@@ -30,8 +30,6 @@ public class TelaPaciente extends JFrame implements ActionListener {
 	private JTextArea verResultados;
 	private JButton create, read, update, delete;
 	private String imgIco = "";
-	private String[] imagens = { "", "" };
-	private ImageIcon icon;
 	private String texto = "";
 
 	public TelaPaciente() {
@@ -70,15 +68,15 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		painel.add(rotulos);
 
 		tfnome = new JTextField();
-		tfnome.setBounds(140, 25, 140, 30);
+		tfnome.setBounds(140, 25, 255, 30);
 		painel.add(tfnome);
 
 		tfdata = new JTextField();
-		tfdata.setBounds(140, 60, 255, 30);
+		tfdata.setBounds(140, 60, 80, 30);
 		painel.add(tfdata);
 
 		tfhorario = new JTextField();
-		tfhorario.setBounds(140, 92, 255, 30);
+		tfhorario.setBounds(140, 92, 80, 30);
 		painel.add(tfhorario);
 
 		tfmedico = new JTextField();
@@ -101,12 +99,6 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		rolagem = new JScrollPane(verResultados);
 		rolagem.setBounds(20, 340, 740, 200);
 		painel.add(rolagem);
-
-//		imagem = new JLabel();
-//		imagem.setBounds(405, 60, 350, 240);
-//		imagem.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-//		alternarImagens(0);
-//		painel.add(imagem);
 
 		create = new JButton("Cadastrar");
 		read = new JButton("Buscar");
@@ -131,11 +123,6 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		update.addActionListener(this);
 		delete.addActionListener(this);
 	}
-
-//	private void alternarImagens(int indice) {
-//		icon = new ImageIcon(new ImageIcon(imagens[indice]).getImage().getScaledInstance(350, 240, 100));
-//		imagem.setIcon(icon);
-//	}
 
 	private void cadastrar() {
 		if (tfnome.getText().length() != 0 && tfdata.getText().length() != 0 && tfhorario.getText().length() != 0
@@ -215,5 +202,10 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		PacienteProcessa.abrir();
 
 		new TelaPaciente().setVisible(true);
+	}
+
+	public void setModal(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 }

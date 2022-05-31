@@ -1,9 +1,0 @@
-package controle;
-
-public class PacienteProcessa {
-
-	public static ArrayList<Paciente> paciente = new ArrayList<>();
-	public static void salvar() {
-		pd.escrever(paciente);
-	}
-}

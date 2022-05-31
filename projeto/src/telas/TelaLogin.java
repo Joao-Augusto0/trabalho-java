@@ -11,14 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 import controle.LoginProcessa;
 import controle.PacienteProcessa;
-import modelo.Funcionario;
 
 public class TelaLogin extends JFrame implements ActionListener {
 
@@ -35,7 +31,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 
 		setTitle("Tela de Login");
 		setIconImage(new ImageIcon(imgIco).getImage());
-		setBounds(600, 200, 460, 400);
+		setBounds(400, 200, 420, 300);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		painel = new JPanel(); 
 		painel.setBackground(new Color(176,224,230));
@@ -43,16 +39,16 @@ public class TelaLogin extends JFrame implements ActionListener {
 		setLayout(null);
 
 		rotulo1 = new JLabel("Login:");
-		rotulo1.setBounds(20, 20, 100, 20);
+		rotulo1.setBounds(20, 70, 100, 20);
 		tfLogin = new JTextField();
-		tfLogin.setBounds(120, 20, 200, 30);
+		tfLogin.setBounds(120, 70, 200, 30);
 		rotulo2 = new JLabel("Senha:");
-		rotulo2.setBounds(20, 60, 100, 20);
+		rotulo2.setBounds(20, 110, 100, 20);
 		senha = new JPasswordField();
 		senha.setEchoChar('*');
-		senha.setBounds(120, 60, 200, 30);
+		senha.setBounds(120, 110, 200, 30);
 		login = new JButton("Login");
-		login.setBounds(120, 100, 200, 30);
+		login.setBounds(120, 150, 200, 30);
 		
 		login.addActionListener(this);
 
@@ -64,26 +60,25 @@ public class TelaLogin extends JFrame implements ActionListener {
 		
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == login) {
 			if (tfLogin.getText().length() > 0 && new String(senha.getPassword()).length() > 0) {
 				int indice = LoginProcessa.checarLogin(tfLogin.getText());
 				if (indice != -1) {
-					//if (//LoginProcessa.checarSenha(indice, Cripto.encripta(new String(senha.getPassword())))) {
 						this.dispose();
-						TelaLogin tl = new TelaLogin();
+						TelaMenu tl = new TelaMenu();
 						tl.setVisible(true);
 					} else {
 						JOptionPane.showMessageDialog(this, "Acesso negado");
 					}
 				} else {
-					JOptionPane.showMessageDialog(this, "Usu√°rio n√£o encontrado");
+					JOptionPane.showMessageDialog(this, "Usu·rio n„o encontrado");
 				}
 			} else {
 				JOptionPane.showMessageDialog(this, "Preencha o login e a senha");
 			}
 		}
-	//}
 
 	public static void main(String[] args) {
 		LoginProcessa.abrir();
