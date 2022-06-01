@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.Component;
+
 public class Paciente {
 
 	String nome;
@@ -85,6 +87,10 @@ public class Paciente {
 
 	public String toCSV() {
 		return nome + ";" + data + ";" + horario + ";" + medico + ";" + diagnostico + ";" + recomendacao;
+	}
+
+	public Component getId(String string) {
+		return null;
 	}
 
 }

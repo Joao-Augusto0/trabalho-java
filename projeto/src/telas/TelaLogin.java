@@ -33,8 +33,8 @@ public class TelaLogin extends JFrame implements ActionListener {
 		setIconImage(new ImageIcon(imgIco).getImage());
 		setBounds(400, 200, 420, 300);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		painel = new JPanel(); 
-		painel.setBackground(new Color(176,224,230));
+		painel = new JPanel();
+		painel.setBackground(new Color(176, 224, 230));
 		setContentPane(painel);
 		setLayout(null);
 
@@ -49,7 +49,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 		senha.setBounds(120, 110, 200, 30);
 		login = new JButton("Login");
 		login.setBounds(120, 150, 200, 30);
-		
+
 		login.addActionListener(this);
 
 		painel.add(rotulo1);
@@ -57,33 +57,36 @@ public class TelaLogin extends JFrame implements ActionListener {
 		painel.add(rotulo2);
 		painel.add(senha);
 		painel.add(login);
-		
+
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == login) {
 			if (tfLogin.getText().length() > 0 && new String(senha.getPassword()).length() > 0) {
 				int indice = LoginProcessa.checarLogin(tfLogin.getText());
 				if (indice != -1) {
-						this.dispose();
-						TelaMenu tl = new TelaMenu();
-						tl.setVisible(true);
-					} else {
-						JOptionPane.showMessageDialog(this, "Acesso negado");
-					}
+					this.dispose();
+					TelaMenu tl = new TelaMenu();
+					tl.setVisible(true);
 				} else {
-					JOptionPane.showMessageDialog(this, "Usuário não encontrado");
+					JOptionPane.showMessageDialog(this, "Acesso negado");
 				}
 			} else {
-				JOptionPane.showMessageDialog(this, "Preencha o login e a senha");
+				JOptionPane.showMessageDialog(this, "Usuário não encontrado");
 			}
+		} else {
+			JOptionPane.showMessageDialog(this, "Preencha o login e a senha");
 		}
+	}
 
 	public static void main(String[] args) {
 		LoginProcessa.abrir();
 		PacienteProcessa.abrir();
 		TelaLogin login = new TelaLogin();
 		login.setVisible(true);
+	}
+
+	public void setModal(boolean b) {
+
 	}
 }
