@@ -1,18 +1,13 @@
 package telas;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,32 +21,24 @@ public class TelaPaciente extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel painel;
-	private JMenuBar barraMenu = new JMenuBar();
 	private JLabel nome, data, horario, medico, diagnostico, recomendacao, rotulos;
 	private JTextField tfnome, tfdata, tfhorario, tfmedico, tfdiagnostico, tfrecomendacao;
 	private JScrollPane rolagem;
 	private JTextArea verResultados;
 	private JButton create, read, update, delete;
-	private JMenu menuCadastro, menuSistema;
-	private JMenuItem itemPets, itemServicos, itemUsuarios;
-	private String imgIco = "./assets/icone.png";
-	private String pathFundo = "./assets/fundo.png";
-	private ImageIcon fundo;
-	private JLabel lbFundo = new JLabel();
+	private String imgIco = "";
 	private String texto = "";
 
-	TelaPaciente() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	public TelaPaciente() {
 		setTitle("cadastro do paciente");
 		setBounds(100, 100, 800, 600);
 		setIconImage(new ImageIcon(imgIco).getImage());
 		painel = new JPanel();
-		painel.setBackground(new Color(255, 233, 213));
-//		setJMenuBar(barraMenu);
+		painel.setBackground(new Color(0, 255, 127));
 		setContentPane(painel);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
-		
+
 		nome = new JLabel("nome:");
 		nome.setBounds(20, 20, 120, 30);
 		painel.add(nome);
@@ -64,7 +51,7 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		medico = new JLabel("medico:");
 		medico.setBounds(20, 125, 120, 30);
 		painel.add(medico);
-		
+
 		diagnostico = new JLabel("diagnostico:");
 		diagnostico.setBounds(20, 165, 120, 30);
 		painel.add(diagnostico);
@@ -100,7 +87,7 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		tfrecomendacao = new JTextField();
 		tfrecomendacao.setBounds(140, 205, 255, 30);
 		painel.add(tfrecomendacao);
-		
+
 		verResultados = new JTextArea();
 		verResultados.setEditable(false);
 		verResultados.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
@@ -127,37 +114,13 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		painel.add(read);
 		painel.add(update);
 		painel.add(delete);
-		
+
 		create.addActionListener(this);
 		read.addActionListener(this);
 		update.addActionListener(this);
 		delete.addActionListener(this);
-	
-
-		fundo = new ImageIcon(new ImageIcon(pathFundo).getImage().getScaledInstance(850, 605, 100));
-		lbFundo.setIcon(fundo);
-		lbFundo.setBounds(20, 15, 850, 605);
-		painel.add(lbFundo);
-
-		menuCadastro = new JMenu("Cadastros");
-		menuSistema = new JMenu("Configurações");
-		barraMenu.add(menuCadastro);
-		barraMenu.add(menuSistema);
-		itemPets = new JMenuItem("Gestão de Pets");
-		itemServicos = new JMenuItem("Gestão de Serviços");
-		itemUsuarios = new JMenuItem("Gestão de Usuários");
-		menuCadastro.add(itemPets);
-		menuCadastro.add(itemServicos);
-		menuSistema.add(itemUsuarios);
-		barraMenu.setBackground(new Color(255, 233, 213));
-
-		itemPets.addActionListener(this);
-		itemUsuarios.addActionListener(this);
-		
-		
-		
 	}
-	
+
 	private void cadastrar() {
 		if (tfnome.getText().length() != 0 && tfdata.getText().length() != 0 && tfhorario.getText().length() != 0
 				&& tfmedico.getText().length() != 0 && tfdiagnostico.getText().length() != 0
@@ -167,27 +130,12 @@ public class TelaPaciente extends JFrame implements ActionListener {
 					tfmedico.getText(), tfdiagnostico.getText(), tfrecomendacao.getText()));
 			preencherAreaDeTexto();
 			limparCampos();
+			PacienteProcessa.salvar();
 		} else {
 			JOptionPane.showMessageDialog(this, "Favor preencher todos os campos.");
 		}
 	}
-
-	private void limparCampos() {
-		tfdata.setText(null);
-		tfhorario.setText(null);
-		tfmedico.setText(null);
-		tfdiagnostico.setText(null);
-	}
 	
-	private void preencherAreaDeTexto() {
-		texto = ""; 
-		for (Paciente p : PacienteProcessa.paciente) {
-			texto += p.toString();
-		}
-		verResultados.setText(texto);
-	}
-	
-
 	private void alterar() {
 		Paciente p = new Paciente(imgIco);
 		int indice = PacienteProcessa.paciente.indexOf(p);
@@ -206,7 +154,7 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		delete.setEnabled(false);
 		PacienteProcessa.salvar();
 	}
-
+	
 	private void excluir() {
 		Paciente p = new Paciente(imgIco);
 		int indice = PacienteProcessa.paciente.indexOf(p);
@@ -218,7 +166,22 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		delete.setEnabled(false);
 
 	}
-	
+
+	private void limparCampos() {
+		tfdata.setText(null);
+		tfhorario.setText(null);
+		tfmedico.setText(null);
+		tfdiagnostico.setText(null);
+	}
+
+	private void preencherAreaDeTexto() {
+		texto = "";
+		for (Paciente p : PacienteProcessa.paciente) {
+			texto += p.toString();
+		}
+		verResultados.setText(texto);
+	}
+
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == create) {
@@ -231,32 +194,5 @@ public class TelaPaciente extends JFrame implements ActionListener {
 		if (e.getSource() == delete) {
 			excluir();
 		}
-	}
-
-//	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == itemUsuarios) {
-//			TelaLogin uf = new TelaLogin();
-//			uf.setModal(true);
-//			uf.setVisible(true);
-//		}
-//		if (e.getSource() == itemRelatorio) {
-//			TelaMedico tf = new TelaMedico();
-//			tf.setModal(true);
-//			tf.setVisible(true);
-//		}
-//		if (e.getSource() == itemDashBoard) {
-//			abrirPlanilha();
-//		}
-//
-//	}
-	
-	public static void main(String[] agrs) throws ParseException {
-		PacienteProcessa.abrir();
-
-		new TelaPaciente().setVisible(true);
-	}
-
-	public void setModal(boolean b) {
-		
 	}
 }

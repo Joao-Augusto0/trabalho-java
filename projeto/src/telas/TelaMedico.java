@@ -1,88 +1,84 @@
 package telas;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import controle.PacienteProcessa;
+
+import modelo.Paciente;
 
 public class TelaMedico extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel painel;
-	private JMenuBar barraMenu = new JMenuBar();
-	private JMenu menuRelatorio;
-	private JMenuItem itemPets, itemUsuarios, itemDashBoard, itemRelatorio;
-	private String imgIco = "./assets/icone.png";
-	private String pathFundo = "./assets/fundo.png";
-	private ImageIcon fundo;
-	private JLabel lbFundo = new JLabel();
+	private JLabel nome, rotulos;
+	private JTextField tfnome;
+	private JScrollPane rolagem;
+	private JTextArea verResultados;
+	private JButton read;
+	private String imgIco = "";
+	private String texto = "";
 
-	TelaMedico() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("Acesso dos Funcionarios");
-		setBounds(100, 100, 400, 400);
+	public TelaMedico() {
+		setTitle("Consultas");
+		setBounds(100, 100, 800, 600);
 		setIconImage(new ImageIcon(imgIco).getImage());
 		painel = new JPanel();
-		painel.setBackground(new Color(255, 233, 213));
-		setJMenuBar(barraMenu);
+		painel.setBackground(new Color(0, 255, 127));
 		setContentPane(painel);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
 
-		fundo = new ImageIcon(new ImageIcon(pathFundo).getImage().getScaledInstance(850, 605, 100));
-		lbFundo.setIcon(fundo);
-		lbFundo.setBounds(20, 15, 850, 605);
-		painel.add(lbFundo);
+		nome = new JLabel("nome:");
+		nome.setBounds(20, 20, 120, 30);
+		painel.add(nome);
 
-		menuRelatorio = new JMenu("Relatórios");
-		barraMenu.add(menuRelatorio);
-		itemRelatorio = new JMenuItem("Relatórios de Serviços");
-		itemDashBoard = new JMenuItem("Analizar Dados - DashBoard");
-		menuRelatorio.add(itemRelatorio);
-		menuRelatorio.add(itemDashBoard);
+		rotulos = new JLabel("agenda:");
+		rotulos.setBounds(20, 310, 500, 30);
+		painel.add(rotulos);
 
-		barraMenu.setBackground(new Color(255, 233, 213));
+		tfnome = new JTextField();
+		tfnome.setBounds(140, 25, 255, 30);
+		painel.add(tfnome);
 
-		itemDashBoard.addActionListener(this);
-		itemRelatorio.addActionListener(this);
+		verResultados = new JTextArea();
+		verResultados.setEditable(false);
+		verResultados.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+
+		preencherAreaDeTexto();
+		rolagem = new JScrollPane(verResultados);
+		rolagem.setBounds(20, 340, 740, 200);
+		painel.add(rolagem);
+
+		read = new JButton("Buscar");
+
+		read.setBounds(405, 25, 110, 30);
+
+		painel.add(read);
+
+		read.addActionListener(this);
+
 	}
-
-	private void abrirPlanilha() {
-		Runtime rt = Runtime.getRuntime();
-		String dashboard[] = { "cmd", "/c", "start", "/data/Triagem.xlsm" };
-		try {
-			rt.exec(dashboard);
-		} catch (IOException e) {
-			System.out.println(e);
+	
+	private void preencherAreaDeTexto() {
+		texto = ""; 
+		for (Paciente p : PacienteProcessa.paciente) {
+			texto += p.toString();
 		}
+		verResultados.setText(texto);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == itemPets) {
-			TelaPaciente pf = new TelaPaciente();
-			pf.setModal(true);
-			pf.setVisible(true);
-		}
-		if (e.getSource() == itemUsuarios) {
-			TelaLogin uf = new TelaLogin();
-			uf.setModal(true);
-			uf.setVisible(true);
-		}
-		if (e.getSource() == itemRelatorio) {
-			TelaPaciente tp = new TelaPaciente();
-			tp.setModal(true);
-			tp.setVisible(true);
-		}
-		if (e.getSource() == itemDashBoard) {
-			abrirPlanilha();
-		}
+		
 	}
 }

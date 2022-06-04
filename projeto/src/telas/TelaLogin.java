@@ -72,7 +72,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(this, "Acesso negado");
 				}
 			} else {
-				JOptionPane.showMessageDialog(this, "Usuário não encontrado");
+				JOptionPane.showMessageDialog(this, "Usuï¿½rio nï¿½o encontrado");
 			}
 		} else {
 			JOptionPane.showMessageDialog(this, "Preencha o login e a senha");
@@ -84,9 +84,5 @@ public class TelaLogin extends JFrame implements ActionListener {
 		PacienteProcessa.abrir();
 		TelaLogin login = new TelaLogin();
 		login.setVisible(true);
-	}
-
-	public void setModal(boolean b) {
-
 	}
 }
